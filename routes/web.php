@@ -15,7 +15,7 @@ Route::get('/dashboard', function () {
 
 
 Route::get('/categories', [CategoryController::class, 'index'])->middleware(['auth', 'verified']);
-
+Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

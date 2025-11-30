@@ -6,6 +6,30 @@
 </head>
 <body>
 <div class="container mt-5">
+
+        <h1>Create Category</h1>
+
+    @if(session('success'))
+        <p style="color: green;">{{ session('success') }}</p>
+    @endif
+
+    @if($errors->any())
+        <ul style="color: red;">
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
+
+    <form method="POST" action="{{ route('categories.store') }}">
+        @csrf
+        <label for="name">Category Name:</label>
+        <input type="text" name="name" id="name" required>
+        <button type="submit">Create</button>
+    </form>
+
+
+
     <h2>All Categories</h2>
     <table class="table table-bordered">
         <thead>
